@@ -32,6 +32,32 @@ android {
     buildFeatures {
         viewBinding true
     }
+    productFlavors {
+        flavorDimensions 'product', 'side'
+        agricola {
+            dimension 'product'
+            applicationIdSuffix '.agricola'
+            manifestPlaceholders.appName = "Agricola"
+
+            buildConfigField "String", "FIREBASE_FLAVOR_COLLECTION", "\"agricola\""
+        }
+        caverna {
+            dimension 'product'
+            applicationIdSuffix '.caverna'
+            manifestPlaceholders.appName = "Caverna"
+
+            buildConfigField "String", "FIREBASE_FLAVOR_COLLECTION", "\"caverna\""
+        }
+        client {
+            dimension 'side'
+            manifestPlaceholders.appNameSuffix = ""
+        }
+        admin {
+            dimension 'side'
+            applicationIdSuffix '.admin'
+            manifestPlaceholders.appNameSuffix = ".Admin"
+        }
+    }
 }
 
 dependencies {
